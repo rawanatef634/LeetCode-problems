@@ -6,7 +6,7 @@ function twoSumSorted(arr, target) {
         if (sum === target) {
             return [left, right]
         }
-        if (sum < target) {
+        else if (sum < target) {
             left++
         }
         else {
