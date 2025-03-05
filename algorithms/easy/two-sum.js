@@ -1,14 +1,19 @@
-var twoSum = function(nums, target) {
-    let map = {}; // Store seen numbers and their indices
-
-    for (let i = 0; i < nums.length; i++) {
-        let complement = target - nums[i];
-
-        if (map.hasOwnProperty(complement)) {
-            console.log(`output: [${map[complement]}, ${i}]`);
-            return [map[complement], i];
+function twoSumSorted(arr, target) {
+    let left = 0;
+    let right = arr.length -1;
+    while (left < right) {
+        let sum = arr[left] + arr[right]
+        if (sum === target) {
+            return [left, right]
         }
-
-        map[nums[i]] = i; // Store current number in map
+        if (sum < target) {
+            left++
+        }
+        else {
+            right--
+        }
     }
-};
+    return [-1, -1]
+}
+
+console.log(twoSumSorted([1, 2, 3, 4, 6], 9)); 

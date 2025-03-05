@@ -1,12 +1,17 @@
 function longestCommonPrefix(strs) {
     if (!strs.length) return "";
 
-    let prefix = strs[0]; // Start with the first word
+    strs.sort();
 
-    for (let i = 1; i < strs.length; i++) {
-        while (strs[i].indexOf(prefix) !== 0) { // Keep trimming the prefix
-            prefix = prefix.slice(0, -1);
-            if (!prefix) return ""; // If no prefix remains, return ""
+    let first = strs[0]; // First word (smallest in lexicographic order)
+    let last = strs[strs.length - 1]; // Last word (largest in lexicographic order)
+    let prefix = "";
+
+    for (let i = 0; i < first.length; i++) {
+        if (first[i] === last[i]) {
+            prefix += first[i]; 
+        } else {
+            break;
         }
     }
 
@@ -14,4 +19,6 @@ function longestCommonPrefix(strs) {
 }
 
 // Example Usage:
-console.log(longestCommonPrefix(["flower", "flow", "flight"])); // Output: "fl"
+console.log(longestCommonPrefix(["flower", "flow", "flight"]));
+console.log(longestCommonPrefix(["dog", "racecar", "car"]));  
+console.log(longestCommonPrefix(["apple", "app", "apricot"])); 
