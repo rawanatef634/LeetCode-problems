@@ -8,5 +8,9 @@ var removeElement = function(nums, val) {
         if(nums[i] === val){
             nums.splice(i, 1);
         }
+        return nums
+
     }
 };
+
+console.log(removeElement([3, 2, 2,3]));
